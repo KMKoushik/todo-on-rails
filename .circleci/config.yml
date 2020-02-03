@@ -1,0 +1,29 @@
+# Ruby CircleCI 2.1 configuration file
+#
+# Check https://circleci.com/docs/2.0/ruby/ for more details
+#
+version: 2.1 
+
+
+orbs:
+  ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
+
+jobs: 
+  build: 
+    docker: 
+      - image: circleci/ruby:2.6.3-stretch-node
+    steps: 
+      - checkout
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+      - run:
+          name: Install bundler
+          command: gem install bundler
+      - run:
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+      - run:
+          name: Run rspec in parallel
+          command: rails test
