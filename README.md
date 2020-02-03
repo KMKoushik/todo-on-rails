@@ -1,4 +1,4 @@
-[![build](https://circleci.com/gh/koushikmohan1996/todo-on-rails.svg?style=svg)](https://circleci.com/gh/koushikmohan1996/todo-on-rails)
+# Todo on rails [![build](https://circleci.com/gh/koushikmohan1996/todo-on-rails.svg?style=svg)](https://circleci.com/gh/koushikmohan1996/todo-on-rails)
 
 
 ## API server for task management. Written in Ruby.
