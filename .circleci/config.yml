@@ -22,8 +22,11 @@ jobs:
           name: Install bundler
           command: gem install bundler
       - run:
+          name: Install rails
+          command: gem install rails
+      - run:
           name: Bundle Install
-          command: bundle check --path vendor/bundle || bundle install --deployment
+          command: bundle check --path vendor/bundle || bundle install --deployment || gem install rails
       - run:
           name: Run rspec in parallel
           command: rails test
