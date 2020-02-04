@@ -8,8 +8,7 @@ class TasksController < ApplicationController
 
   # POST
   def create
-    task = Task.new(task_params)
-    task.user_id = current_user.id
+    task = current_user.tasks.new(task_params)
     if task.save
       render json: { message: task }, status: :ok
     else
